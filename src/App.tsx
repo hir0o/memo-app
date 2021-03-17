@@ -1,27 +1,39 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { FC } from 'react';
+import MemoItem, { CommentType } from './components/MemoItem';
+import MemoInput from './components/MemoInput';
+import Header from './components/Header';
 
-function App() {
+const App: FC = () => {
+  const comments1: CommentType[] = [
+    {
+      content: 'コメント1',
+    },
+    {
+      content: 'コメント2',
+    },
+    {
+      content: 'コメント3',
+    },
+  ];
+  const comments2: CommentType[] = [
+    {
+      content: 'コメント1',
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          <code>src/App.tsx</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div className="container">
+        <div className="memos">
+          <MemoItem />
+          <MemoItem comments={comments1} />
+          <MemoItem />
+          <MemoItem comments={comments2} />
+        </div>
+        <MemoInput />
+      </div>
+    </>
   );
-}
-
+};
 export default App;
